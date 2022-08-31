@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=], initial-scale=1.0">
+
+    <link rel="stylesheet" href="./css/style.css">
+    <script src="https://unpkg.com/vue@3"></script>
+    <script src="./node_modules/qrious/dist/qrious.js"></script> 
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Roboto+Condensed:wght@700&display=swap');
+    </style>
+
+    <title>Generate QRCode</title>
+</head>
+<body>
+    <div id="app" class="main-container">
+        <h1>{{ tittle }}</h1>
+
+        <input v-model="text" type="text" class="input-style"/>
+
+        <div class="qrcode-container">
+            <img :src="newQRCode" alt="">
+        </div>
+    </div>
+    <script>
+        const { createApp } = Vue
+
+        createApp({
+            data() {
+                return {
+                    tittle: 'Generate your QR Code...',
+                    text: 'Para o meu Amor S2...',
+                    qrcode: new QRious({ size: 300 })
+                }
+            },
+            computed: {
+                newQRCode() {
+                    if (this.text === 'Para o meu Amor S2...') {
+                        this.qrcode.value = 'Eu te amo fifi!'
+                        return this.qrcode.toDataURL()    
+                    }
+                    this.qrcode.value = this.text
+                    return this.qrcode.toDataURL()
+                }
+            }
+        }).mount('#app')
+
+    </script>
+</body>
+</html>
