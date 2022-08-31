@@ -7,9 +7,9 @@
 
     <link rel="stylesheet" href="./css/style.css">
     <script src="https://unpkg.com/vue@3"></script>
-    <script src="./node_modules/qrious/dist/qrious.js"></script> 
+    <script src="./js/qrious.min.js"></script> 
     <style>
-        @import url('https://fonts.googleapis.com/css2?family=Roboto+Condensed:wght@700&display=swap');
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@900&family=Roboto+Condensed:wght@700&display=swap');
     </style>
 
     <title>Generate QRCode</title>
@@ -17,12 +17,15 @@
 <body>
     <div id="app" class="main-container">
         <h1>{{ tittle }}</h1>
+        <h3>{{ subTittle }}</h3>
 
         <input v-model="text" type="text" class="input-style"/>
 
         <div class="qrcode-container">
             <img :src="newQRCode" alt="">
         </div>
+        <img src="./assets/clips.png" alt="clips" class="clips">
+        <a :href="linkQrCode" class="goToQrCode">go to link</a>
     </div>
     <script>
         const { createApp } = Vue
@@ -30,19 +33,25 @@
         createApp({
             data() {
                 return {
-                    tittle: 'Generate your QR Code...',
-                    text: 'Para o meu Amor S2...',
-                    qrcode: new QRious({ size: 300 })
+                    tittle: 'QRCodes',
+                    subTittle: 'generate your QR codes',
+                    text: 'https://www.google.com',
+                    qrcode: new QRious({ 
+                        background: 'transparent',
+                        size: 250 
+                    })
                 }
             },
             computed: {
                 newQRCode() {
-                    if (this.text === 'Para o meu Amor S2...') {
-                        this.qrcode.value = 'Eu te amo fifi!'
-                        return this.qrcode.toDataURL()    
-                    }
                     this.qrcode.value = this.text
                     return this.qrcode.toDataURL()
+                },
+                linkQrCode() {
+                    if (this.text.startsWith('https://') || this.text.startsWith('http://')) {
+                        return this.text
+                    }
+                    return 'https://www.google.com/search?q=' + this.text
                 }
             }
         }).mount('#app')

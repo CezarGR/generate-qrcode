@@ -1,27 +1,53 @@
-body {
-    background: rgb(27,166,153);
-    background: linear-gradient(90deg, rgba(27,166,153,1) 0%, rgba(39,126,26,1) 28%, rgba(40,123,17,1) 35%, rgba(41,121,9,1) 45%, rgba(37,129,31,1) 56%, rgba(0,212,255,1) 100%);
+body{
+    font-family: 'Inter', sans-serif;
+	margin:0;
+	padding:0;
+	font-size:12px;
+    background: #2980b9 url('https://static.tumblr.com/03fbbc566b081016810402488936fbae/pqpk3dn/MRSmlzpj3/tumblr_static_bg3.png') repeat 0 0;
+	-webkit-animation: 10s linear 0s normal none infinite animate;
+	-moz-animation: 10s linear 0s normal none infinite animate;
+	-ms-animation: 10s linear 0s normal none infinite animate;
+	-o-animation: 10s linear 0s normal none infinite animate;
+	animation: 10s linear 0s normal none infinite animate;
 }
-
-@keyframes animation-shadow {
-    from {text-shadow: 3px 3px #44414187;}
-    to {text-shadow: 3px 3px #44414183;}
+ 
+@-webkit-keyframes animate {
+	from {background-position:0 0;}
+	to {background-position: 500px 0;}
 }
-
-@keyframes animation-container {
-    0% {border: 3px solid rgb(21, 212, 37);}
-    50% {border: 3px solid rgb(205, 218, 25);}
-    100% {border: 3px solid rgb(128, 218, 25);}
+ 
+@-moz-keyframes animate {
+	from {background-position:0 0;}
+	to {background-position: 500px 0;}
+}
+ 
+@-ms-keyframes animate {
+	from {background-position:0 0;}
+	to {background-position: 500px 0;}
+}
+ 
+@-o-keyframes animate {
+	from {background-position:0 0;}
+	to {background-position: 500px 0;}
+}
+ 
+@keyframes animate {
+	from {background-position:0 0;}
+	to {background-position: 500px 0;}
 }
 
 h1 {
     color: white;
-    font-size: 40px;
-    font-family: 'Roboto Condensed', sans-serif;
-    text-shadow: 2px 2px #44414187;
-    animation-name: animation-shadow;
-    animation-duration: 1s;
-    animation-iteration-count: infinite;
+    font-weight: 900;
+    font-size: 50px;
+    margin-bottom: 0px;
+}
+
+h3 {
+    color: white;
+    font-weight: 00;
+    font-size: 14px;
+    margin-top: 0px;
 }
 
 .main-container {
@@ -34,13 +60,9 @@ h1 {
 }
 
 .qrcode-container {
-    border: 3px solid #ccc;
     border-radius: 5px;
     padding: 10px;
     margin: 50px 50px 50px 50px;
-    animation-name: animation-container;
-    animation-duration: 2s;
-    animation-iteration-count: infinite;
 }
 
 .input-style {
@@ -49,21 +71,47 @@ h1 {
 
 input[type=text] {
     font-weight: 100;
-    font-family: 'Roboto Condensed', sans-serif;
     color: white;
     background-color: transparent;
     width: 50%;
     padding: 12px 20px;
     box-sizing: border-box;
-    border-radius: 5px;
-    border: 3px solid #ccc;
+    border: 3px solid white;
     -webkit-transition: 0.5s;
     transition: 0.5s;
     outline: none;
+    border-top-style: none;
+    border-left-style: none;
+    border-right-style: none;
+    text-align-last: center;
+    
 }
 
-input[type=text]:focus {
+/* input[type=text]:focus {
+    border-top-style: none;
+    border-left-style: none;
+    border-right-style: none;
     animation-name: animation-container;
     animation-duration: 2s;
     animation-iteration-count: infinite;
+} */
+
+.goToQrCode {
+    color: #828282;
+    border-radius: 10px;
+    text-decoration: none;
+    padding: 3px 50px 3px 50px;
+    background-color: white;
+}
+
+.clips {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    padding: 0px;
+    top: 42px;
+    left: 57px;
+    position: relative;
+    width: 60px;
+    height: 60px;
 }
